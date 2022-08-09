@@ -1,0 +1,104 @@
+.stakeCont {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1200px;
+  gap: 3rem;
+  margin: 3rem 0rem;
+  padding-inline: 20px;
+}
+.stake-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.stake-header h3 {
+  text-transform: uppercase;
+  color: white;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 8px 24px;
+  cursor: pointer;
+}
+.active-main {
+  background: rgba(17, 20, 29, 0.72);
+  border: 1px solid #000000;
+  border-radius: 100vh;
+}
+.row-rent-selection {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  gap: 40px;
+  font-weight: 300;
+  position: relative;
+}
+.row-rent-selection::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.25);
+}
+.row-rent-selection a {
+  position: relative;
+  padding-bottom: 10px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+.active {
+  color: white !important;
+}
+.row-rent-selection a::before {
+  content: "";
+  transition: all 0.3s ease-in-out;
+  position: absolute;
+  width: 100%;
+  z-index: 3;
+  height: 4px;
+  bottom: -1px;
+  border-radius: 10px;
+  left: 0;
+  opacity: 0;
+  background-image: linear-gradient(to right, #2e62ff 100%, #4b24dc 100%);
+}
+.active::before {
+  opacity: 1 !important;
+}
+.bottom-stake {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+  width: 100%;
+}
+.drop-menu-filter {
+  position: relative;
+}
+.drop-menu-filter p {
+  display: block;
+  color: white;
+  font-size: 1.1rem;
+  padding-bottom: 6px;
+  cursor: pointer;
+  border-bottom: 2px solid white;
+  width: fit-content;
+  user-select: none;
+}
+.drop-menu-filter p svg {
+  transition: all 0.5s ease-in-out;
+  margin-left: 10px;
+}
+@media screen and (max-width: 410px) {
+  .row-rent-selection {
+    gap: 20px;
+  }
+}
