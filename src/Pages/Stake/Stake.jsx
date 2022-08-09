@@ -3,15 +3,17 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 
 import FilterModal from "../../Components/FilterModal/FilterModal";
 import "./Stake.css";
-import heimdall from "../../Assets/nft/heimdall.png";
-import freya from "../../Assets/nft/freya.png";
-import odin from "../../Assets/nft/odin.png";
-import thor from "../../Assets/nft/thor.png";
+import heimdallImg from "../../Assets/nft/heimdall.png";
+import freyaImg from "../../Assets/nft/freya.png";
+import odinImg from "../../Assets/nft/odin.png";
+import thorImg from "../../Assets/nft/thor.png";
 import NftBox from "../../Components/NftBox/NftBox";
 function Stake() {
+  const { odin, thor, freya, heim } = useSelector((state) => state.filter);
   const [openFilterModal, setOpenFilterModal] = useState(false);
   return (
     <div className="stakeCont">
@@ -43,194 +45,202 @@ function Stake() {
           </p>
           {openFilterModal && <FilterModal />}
         </div>
-        <div className="slider-row heimdall-row">
-          <div className="wrapper-h1">
-            <h1 className="trajan">HEIMDALL</h1>
+        {heim && (
+          <div className="slider-row heimdall-row">
+            <div className="wrapper-h1">
+              <h1 className="trajan">HEIMDALL</h1>
+            </div>
+            <Splide
+              options={{
+                rewind: true,
+                gap: "1rem",
+                type: "loop",
+                perMove: 1,
+                width: "85%",
+                perPage: 3,
+                pagination: false,
+                breakpoints: {
+                  974: {
+                    perPage: 2,
+                    width: "80%",
+                  },
+                  700: {
+                    perPage: 1,
+                  },
+                  580: {
+                    width: "100%",
+                  },
+                },
+              }}
+            >
+              <SplideSlide>
+                <NftBox name={"Heimdall"} img={heimdallImg} staked />
+              </SplideSlide>
+              <SplideSlide>
+                <NftBox name={"Heimdall"} img={heimdallImg} staked />
+              </SplideSlide>
+              <SplideSlide>
+                <NftBox name={"Heimdall"} img={heimdallImg} />
+              </SplideSlide>
+              <SplideSlide>
+                <NftBox name={"Heimdall"} img={heimdallImg} staked />
+              </SplideSlide>
+              <SplideSlide>
+                <NftBox name={"Heimdall"} img={heimdallImg} />
+              </SplideSlide>
+            </Splide>
+            <div className="wrapper-h1">
+              <h1 className="trajan">100$ASG/DAY</h1>
+            </div>
           </div>
-          <Splide
-            options={{
-              rewind: true,
-              gap: "1rem",
-              type: "loop",
-              perMove: 1,
-              width: "85%",
-              perPage: 3,
-              pagination: false,
-              breakpoints: {
-                974: {
-                  perPage: 2,
-                  width: "80%",
+        )}
+        {freya && (
+          <div className="slider-row freya-row">
+            <div className="wrapper-h1">
+              <h1 className="trajan">Freya</h1>
+            </div>
+            <Splide
+              options={{
+                rewind: true,
+                gap: "1rem",
+                type: "loop",
+                perMove: 1,
+                width: "85%",
+                perPage: 3,
+                pagination: false,
+                breakpoints: {
+                  974: {
+                    perPage: 2,
+                    width: "80%",
+                  },
+                  700: {
+                    perPage: 1,
+                  },
+                  580: {
+                    width: "100%",
+                  },
                 },
-                700: {
-                  perPage: 1,
-                },
-                580: {
-                  width: "100%",
-                },
-              },
-            }}
-          >
-            <SplideSlide>
-              <NftBox name={"Heimdall"} img={heimdall} staked />
-            </SplideSlide>
-            <SplideSlide>
-              <NftBox name={"Heimdall"} img={heimdall} staked />
-            </SplideSlide>
-            <SplideSlide>
-              <NftBox name={"Heimdall"} img={heimdall} />
-            </SplideSlide>
-            <SplideSlide>
-              <NftBox name={"Heimdall"} img={heimdall} staked />
-            </SplideSlide>
-            <SplideSlide>
-              <NftBox name={"Heimdall"} img={heimdall} />
-            </SplideSlide>
-          </Splide>
-          <div className="wrapper-h1">
-            <h1 className="trajan">100$ASG/DAY</h1>
+              }}
+            >
+              <SplideSlide>
+                <NftBox name={"Freya"} img={freyaImg} staked />
+              </SplideSlide>
+              <SplideSlide>
+                <NftBox name={"Freya"} img={freyaImg} staked />
+              </SplideSlide>
+              <SplideSlide>
+                <NftBox name={"Freya"} img={freyaImg} />
+              </SplideSlide>
+              <SplideSlide>
+                <NftBox name={"Freya"} img={freyaImg} staked />
+              </SplideSlide>
+              <SplideSlide>
+                <NftBox name={"Freya"} img={freyaImg} />
+              </SplideSlide>
+            </Splide>
+            <div className="wrapper-h1">
+              <h1 className="trajan">200$ASG/DAY</h1>
+            </div>
           </div>
-        </div>
-        <div className="slider-row freya-row">
-          <div className="wrapper-h1">
-            <h1 className="trajan">Freya</h1>
+        )}
+        {thor && (
+          <div className="slider-row thor-row">
+            <div className="wrapper-h1">
+              <h1 className="trajan">Thor</h1>
+            </div>
+            <Splide
+              options={{
+                rewind: true,
+                gap: "1rem",
+                type: "loop",
+                perMove: 1,
+                width: "85%",
+                perPage: 3,
+                pagination: false,
+                breakpoints: {
+                  974: {
+                    perPage: 2,
+                    width: "80%",
+                  },
+                  700: {
+                    perPage: 1,
+                  },
+                  580: {
+                    width: "100%",
+                  },
+                },
+              }}
+            >
+              <SplideSlide>
+                <NftBox name={"Thor"} img={thorImg} staked />
+              </SplideSlide>
+              <SplideSlide>
+                <NftBox name={"Thor"} img={thorImg} staked />
+              </SplideSlide>
+              <SplideSlide>
+                <NftBox name={"Thor"} img={thorImg} />
+              </SplideSlide>
+              <SplideSlide>
+                <NftBox name={"Thor"} img={thorImg} staked />
+              </SplideSlide>
+              <SplideSlide>
+                <NftBox name={"Thor"} img={thorImg} />
+              </SplideSlide>
+            </Splide>
+            <div className="wrapper-h1">
+              <h1 className="trajan">300$ASG/DAY</h1>
+            </div>
           </div>
-          <Splide
-            options={{
-              rewind: true,
-              gap: "1rem",
-              type: "loop",
-              perMove: 1,
-              width: "85%",
-              perPage: 3,
-              pagination: false,
-              breakpoints: {
-                974: {
-                  perPage: 2,
-                  width: "80%",
+        )}
+        {odin && (
+          <div className="slider-row odin-row">
+            <div className="wrapper-h1">
+              <h1 className="trajan">Odin</h1>
+            </div>
+            <Splide
+              options={{
+                rewind: true,
+                gap: "1rem",
+                type: "loop",
+                perMove: 1,
+                width: "85%",
+                perPage: 3,
+                pagination: false,
+                breakpoints: {
+                  974: {
+                    perPage: 2,
+                    width: "80%",
+                  },
+                  700: {
+                    perPage: 1,
+                  },
+                  580: {
+                    width: "100%",
+                  },
                 },
-                700: {
-                  perPage: 1,
-                },
-                580: {
-                  width: "100%",
-                },
-              },
-            }}
-          >
-            <SplideSlide>
-              <NftBox name={"Freya"} img={freya} staked />
-            </SplideSlide>
-            <SplideSlide>
-              <NftBox name={"Freya"} img={freya} staked />
-            </SplideSlide>
-            <SplideSlide>
-              <NftBox name={"Freya"} img={freya} />
-            </SplideSlide>
-            <SplideSlide>
-              <NftBox name={"Freya"} img={freya} staked />
-            </SplideSlide>
-            <SplideSlide>
-              <NftBox name={"Freya"} img={freya} />
-            </SplideSlide>
-          </Splide>
-          <div className="wrapper-h1">
-            <h1 className="trajan">200$ASG/DAY</h1>
+              }}
+            >
+              <SplideSlide>
+                <NftBox name={"Odin"} img={odinImg} staked />
+              </SplideSlide>
+              <SplideSlide>
+                <NftBox name={"Odin"} img={odinImg} staked />
+              </SplideSlide>
+              <SplideSlide>
+                <NftBox name={"Odin"} img={odinImg} />
+              </SplideSlide>
+              <SplideSlide>
+                <NftBox name={"Odin"} img={odinImg} staked />
+              </SplideSlide>
+              <SplideSlide>
+                <NftBox name={"Odin"} img={odinImg} />
+              </SplideSlide>
+            </Splide>
+            <div className="wrapper-h1">
+              <h1 className="trajan">500$ASG/DAY</h1>
+            </div>
           </div>
-        </div>
-        <div className="slider-row thor-row">
-          <div className="wrapper-h1">
-            <h1 className="trajan">Thor</h1>
-          </div>
-          <Splide
-            options={{
-              rewind: true,
-              gap: "1rem",
-              type: "loop",
-              perMove: 1,
-              width: "85%",
-              perPage: 3,
-              pagination: false,
-              breakpoints: {
-                974: {
-                  perPage: 2,
-                  width: "80%",
-                },
-                700: {
-                  perPage: 1,
-                },
-                580: {
-                  width: "100%",
-                },
-              },
-            }}
-          >
-            <SplideSlide>
-              <NftBox name={"Thor"} img={thor} staked />
-            </SplideSlide>
-            <SplideSlide>
-              <NftBox name={"Thor"} img={thor} staked />
-            </SplideSlide>
-            <SplideSlide>
-              <NftBox name={"Thor"} img={thor} />
-            </SplideSlide>
-            <SplideSlide>
-              <NftBox name={"Thor"} img={thor} staked />
-            </SplideSlide>
-            <SplideSlide>
-              <NftBox name={"Thor"} img={thor} />
-            </SplideSlide>
-          </Splide>
-          <div className="wrapper-h1">
-            <h1 className="trajan">300$ASG/DAY</h1>
-          </div>
-        </div>
-        <div className="slider-row odin-row">
-          <div className="wrapper-h1">
-            <h1 className="trajan">Odin</h1>
-          </div>
-          <Splide
-            options={{
-              rewind: true,
-              gap: "1rem",
-              type: "loop",
-              perMove: 1,
-              width: "85%",
-              perPage: 3,
-              pagination: false,
-              breakpoints: {
-                974: {
-                  perPage: 2,
-                  width: "80%",
-                },
-                700: {
-                  perPage: 1,
-                },
-                580: {
-                  width: "100%",
-                },
-              },
-            }}
-          >
-            <SplideSlide>
-              <NftBox name={"Odin"} img={odin} staked />
-            </SplideSlide>
-            <SplideSlide>
-              <NftBox name={"Odin"} img={odin} staked />
-            </SplideSlide>
-            <SplideSlide>
-              <NftBox name={"Odin"} img={odin} />
-            </SplideSlide>
-            <SplideSlide>
-              <NftBox name={"Odin"} img={odin} staked />
-            </SplideSlide>
-            <SplideSlide>
-              <NftBox name={"Odin"} img={odin} />
-            </SplideSlide>
-          </Splide>
-          <div className="wrapper-h1">
-            <h1 className="trajan">500$ASG/DAY</h1>
-          </div>
-        </div>
+        )}
       </div>
     </div>
   );

@@ -8,6 +8,7 @@
   gap: 3rem;
   margin: 3rem 0rem;
   padding-inline: 20px;
+  min-height: 100vh;
 }
 .stake-header {
   display: flex;
