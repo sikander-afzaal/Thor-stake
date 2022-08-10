@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Splide, SplideSlide } from "@splidejs/react-splide";
+import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 
@@ -13,6 +13,8 @@ import odinImg from "../../Assets/nft/odin.png";
 import thorImg from "../../Assets/nft/thor.png";
 import NftBox from "../../Components/NftBox/NftBox";
 import StakeModal from "../../Components/StakeModal/StakeModal";
+import leftArrow from "../../Assets/left-arrow.svg";
+import rightArrow from "../../Assets/right-arrow.svg";
 function Stake() {
   const { odin, thor, freya, heim, nft } = useSelector((state) => state.filter);
   const [openFilterModal, setOpenFilterModal] = useState(false);
@@ -84,6 +86,7 @@ function Stake() {
               <h1 className="trajan">HEIMDALL</h1>
             </div>
             <Splide
+              hasTrack={false}
               options={{
                 rewind: true,
                 gap: "1rem",
@@ -107,18 +110,28 @@ function Stake() {
                 },
               }}
             >
-              {filteredArray.heimNft.map((elem, idx) => {
-                return (
-                  <SplideSlide key={"heim" + idx}>
-                    <NftBox
-                      setValues={setValues}
-                      setModal={setModal}
-                      img={heimdallImg}
-                      {...elem}
-                    />
-                  </SplideSlide>
-                );
-              })}
+              <SplideTrack>
+                {filteredArray.heimNft.map((elem, idx) => {
+                  return (
+                    <SplideSlide key={"heim" + idx}>
+                      <NftBox
+                        setValues={setValues}
+                        setModal={setModal}
+                        img={heimdallImg}
+                        {...elem}
+                      />
+                    </SplideSlide>
+                  );
+                })}
+              </SplideTrack>
+              <div className="splide__arrows">
+                <button className="splide__arrow splide__arrow--prev">
+                  <img src={leftArrow} alt="" />
+                </button>
+                <button className="splide__arrow splide__arrow--next">
+                  <img src={rightArrow} alt="" />
+                </button>
+              </div>
             </Splide>
             <div className="wrapper-h1">
               <h1 className="trajan">100$ASG/DAY</h1>
@@ -131,6 +144,7 @@ function Stake() {
               <h1 className="trajan">Freya</h1>
             </div>
             <Splide
+              hasTrack={false}
               options={{
                 rewind: true,
                 gap: "1rem",
@@ -154,18 +168,28 @@ function Stake() {
                 },
               }}
             >
-              {filteredArray.freyaNft.map((elem, idx) => {
-                return (
-                  <SplideSlide key={"freya" + idx}>
-                    <NftBox
-                      setValues={setValues}
-                      setModal={setModal}
-                      img={freyaImg}
-                      {...elem}
-                    />
-                  </SplideSlide>
-                );
-              })}
+              <SplideTrack>
+                {filteredArray.freyaNft.map((elem, idx) => {
+                  return (
+                    <SplideSlide key={"freya" + idx}>
+                      <NftBox
+                        setValues={setValues}
+                        setModal={setModal}
+                        img={freyaImg}
+                        {...elem}
+                      />
+                    </SplideSlide>
+                  );
+                })}
+              </SplideTrack>
+              <div className="splide__arrows">
+                <button className="splide__arrow splide__arrow--prev">
+                  <img src={leftArrow} alt="" />
+                </button>
+                <button className="splide__arrow splide__arrow--next">
+                  <img src={rightArrow} alt="" />
+                </button>
+              </div>
             </Splide>
             <div className="wrapper-h1">
               <h1 className="trajan">200$ASG/DAY</h1>
@@ -178,6 +202,7 @@ function Stake() {
               <h1 className="trajan">Thor</h1>
             </div>
             <Splide
+              hasTrack={false}
               options={{
                 rewind: true,
                 gap: "1rem",
@@ -201,18 +226,28 @@ function Stake() {
                 },
               }}
             >
-              {filteredArray.thorNft.map((elem, idx) => {
-                return (
-                  <SplideSlide key={"thor" + idx}>
-                    <NftBox
-                      setValues={setValues}
-                      setModal={setModal}
-                      img={thorImg}
-                      {...elem}
-                    />
-                  </SplideSlide>
-                );
-              })}
+              <SplideTrack>
+                {filteredArray.thorNft.map((elem, idx) => {
+                  return (
+                    <SplideSlide key={"thor" + idx}>
+                      <NftBox
+                        setValues={setValues}
+                        setModal={setModal}
+                        img={thorImg}
+                        {...elem}
+                      />
+                    </SplideSlide>
+                  );
+                })}
+              </SplideTrack>
+              <div className="splide__arrows">
+                <button className="splide__arrow splide__arrow--prev">
+                  <img src={leftArrow} alt="" />
+                </button>
+                <button className="splide__arrow splide__arrow--next">
+                  <img src={rightArrow} alt="" />
+                </button>
+              </div>
             </Splide>
             <div className="wrapper-h1">
               <h1 className="trajan">300$ASG/DAY</h1>
@@ -225,6 +260,7 @@ function Stake() {
               <h1 className="trajan">Odin</h1>
             </div>
             <Splide
+              hasTrack={false}
               options={{
                 rewind: true,
                 gap: "1rem",
@@ -248,18 +284,28 @@ function Stake() {
                 },
               }}
             >
-              {filteredArray.odinNft.map((elem, idx) => {
-                return (
-                  <SplideSlide key={"odin" + idx}>
-                    <NftBox
-                      setValues={setValues}
-                      setModal={setModal}
-                      img={odinImg}
-                      {...elem}
-                    />
-                  </SplideSlide>
-                );
-              })}
+              <SplideTrack>
+                {filteredArray.odinNft.map((elem, idx) => {
+                  return (
+                    <SplideSlide key={"odin" + idx}>
+                      <NftBox
+                        setValues={setValues}
+                        setModal={setModal}
+                        img={odinImg}
+                        {...elem}
+                      />
+                    </SplideSlide>
+                  );
+                })}
+              </SplideTrack>
+              <div className="splide__arrows">
+                <button className="splide__arrow splide__arrow--prev">
+                  <img src={leftArrow} alt="" />
+                </button>
+                <button className="splide__arrow splide__arrow--next">
+                  <img src={rightArrow} alt="" />
+                </button>
+              </div>
             </Splide>
             <div className="wrapper-h1">
               <h1 className="trajan">500$ASG/DAY</h1>

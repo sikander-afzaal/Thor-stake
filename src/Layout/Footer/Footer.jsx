@@ -22,14 +22,7 @@ function Footer() {
           <img src={circles} alt="..." />
         </a>
       </div>
-      <h2 className="noto-sans">
-        ©Gods of Asgard{" "}
-        <a target={"blank"} href="https://thor.financial/">
-          {" "}
-          Powered by Thor Financial
-        </a>
-        . All rights reserved.
-      </h2>
+      <h2 className="noto-sans">©Gods of Asgard . All rights reserved.</h2>
     </div>
   );
 }
