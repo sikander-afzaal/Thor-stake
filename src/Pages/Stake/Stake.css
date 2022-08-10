@@ -46,7 +46,7 @@
   bottom: 0;
   background-color: rgba(255, 255, 255, 0.25);
 }
-.row-rent-selection a {
+.row-rent-selection p {
   position: relative;
   padding-bottom: 10px;
   cursor: pointer;
@@ -54,11 +54,12 @@
   font-size: 1.1rem;
   text-decoration: none;
   transition: all 0.3s ease-in-out;
+  user-select: none;
 }
 .active {
   color: white !important;
 }
-.row-rent-selection a::before {
+.row-rent-selection p::before {
   content: "";
   transition: all 0.3s ease-in-out;
   position: absolute;
@@ -100,17 +101,13 @@
   margin-left: 10px;
 }
 .heimdall-row {
-  background: linear-gradient(
-    0deg,
-    rgba(19, 22, 30, 0),
-    rgba(251, 86, 7, 0.64)
-  );
+  background: linear-gradient(0deg, rgba(19, 22, 30, 1), rgba(251, 86, 7, 1));
 }
 .freya-row {
   background: linear-gradient(
     0deg,
-    rgba(19, 22, 30, 0) -39.78%,
-    rgba(131, 56, 236, 0.64) 60.22%
+    rgba(19, 22, 30, 1) -39.78%,
+    rgba(131, 56, 236, 1) 60.22%
   );
 }
 .thor-row {

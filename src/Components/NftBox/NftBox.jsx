@@ -1,8 +1,7 @@
 import React from "react";
-
 import "./NftBox.css";
 
-function NftBox({ idx, staked, name, img }) {
+function NftBox({ id, staked, name, img, setValues, setModal }) {
   return (
     <div className="nft-box">
       <div className="top-nft">
@@ -20,7 +19,17 @@ function NftBox({ idx, staked, name, img }) {
           </div>
         </div>
 
-        <button className={`kanit ${staked ? "grey-rent" : "rent"}`}>
+        <button
+          onClick={() => {
+            setValues({
+              staked: staked,
+              id: id,
+              name: name,
+            });
+            setModal(true);
+          }}
+          className={`kanit ${staked ? "grey-rent" : "rent"}`}
+        >
           {staked ? "Unstake" : "Stake"}
         </button>
       </div>

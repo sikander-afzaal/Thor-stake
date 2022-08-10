@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
@@ -12,26 +12,59 @@ import freyaImg from "../../Assets/nft/freya.png";
 import odinImg from "../../Assets/nft/odin.png";
 import thorImg from "../../Assets/nft/thor.png";
 import NftBox from "../../Components/NftBox/NftBox";
+import StakeModal from "../../Components/StakeModal/StakeModal";
 function Stake() {
-  const { odin, thor, freya, heim } = useSelector((state) => state.filter);
+  const { odin, thor, freya, heim, nft } = useSelector((state) => state.filter);
   const [openFilterModal, setOpenFilterModal] = useState(false);
+  const [stakedNft, setStakedNft] = useState("All");
+  const [filteredArray, setFilteredArray] = useState(nft);
+  const [modal, setModal] = useState(false); //state to update modal visibility
+  const [values, setValues] = useState({ name: "", staked: "", id: "" }); //setting values of the box that is being stakeds
+  useEffect(() => {
+    const copy = { ...nft };
+    for (let [key, value] of Object.entries(nft)) {
+      //looping through the array of nfts to check and filter out the desired NFTS
+      copy[key] = value.filter((elem) => {
+        if (stakedNft === "All") {
+          return elem;
+        } else if (stakedNft === "Staked") {
+          return elem.staked === true;
+        } else if (stakedNft === "Unstaked") {
+          return elem.staked === false;
+        }
+        return elem;
+      });
+    }
+    setFilteredArray(copy);
+  }, [stakedNft, nft]);
+
   return (
     <div className="stakeCont">
+      {modal && <StakeModal setCloseModal={setModal} {...values} />}
       <div className="stake-header">
         <h3 className="stake-links kanit">Rent</h3>
         <h3 className="stake-links kanit active-main">Stake</h3>
         <h3 className="stake-links kanit">Mint</h3>
       </div>
       <div className="row-rent-selection">
-        <a href="#" className="kanit active">
+        <p
+          onClick={() => setStakedNft("All")}
+          className={`kanit ${stakedNft === "All" && "active"}`}
+        >
           All NFTs
-        </a>
-        <a href="#" className="kanit">
+        </p>
+        <p
+          onClick={() => setStakedNft("Staked")}
+          className={`kanit ${stakedNft === "Staked" && "active"}`}
+        >
           Staked NFTs
-        </a>
-        <a href="#" className="kanit">
+        </p>
+        <p
+          onClick={() => setStakedNft("Unstaked")}
+          className={`kanit ${stakedNft === "Unstaked" && "active"}`}
+        >
           Unstaked NFTs
-        </a>
+        </p>
       </div>
       <div className="bottom-stake">
         <div className="drop-menu-filter">
@@ -58,6 +91,7 @@ function Stake() {
                 perMove: 1,
                 width: "85%",
                 perPage: 3,
+                drag: true,
                 pagination: false,
                 breakpoints: {
                   974: {
@@ -73,21 +107,18 @@ function Stake() {
                 },
               }}
             >
-              <SplideSlide>
-                <NftBox name={"Heimdall"} img={heimdallImg} staked />
-              </SplideSlide>
-              <SplideSlide>
-                <NftBox name={"Heimdall"} img={heimdallImg} staked />
-              </SplideSlide>
-              <SplideSlide>
-                <NftBox name={"Heimdall"} img={heimdallImg} />
-              </SplideSlide>
-              <SplideSlide>
-                <NftBox name={"Heimdall"} img={heimdallImg} staked />
-              </SplideSlide>
-              <SplideSlide>
-                <NftBox name={"Heimdall"} img={heimdallImg} />
-              </SplideSlide>
+              {filteredArray.heimNft.map((elem, idx) => {
+                return (
+                  <SplideSlide key={"heim" + idx}>
+                    <NftBox
+                      setValues={setValues}
+                      setModal={setModal}
+                      img={heimdallImg}
+                      {...elem}
+                    />
+                  </SplideSlide>
+                );
+              })}
             </Splide>
             <div className="wrapper-h1">
               <h1 className="trajan">100$ASG/DAY</h1>
@@ -106,6 +137,7 @@ function Stake() {
                 type: "loop",
                 perMove: 1,
                 width: "85%",
+                drag: true,
                 perPage: 3,
                 pagination: false,
                 breakpoints: {
@@ -122,21 +154,18 @@ function Stake() {
                 },
               }}
             >
-              <SplideSlide>
-                <NftBox name={"Freya"} img={freyaImg} staked />
-              </SplideSlide>
-              <SplideSlide>
-                <NftBox name={"Freya"} img={freyaImg} staked />
-              </SplideSlide>
-              <SplideSlide>
-                <NftBox name={"Freya"} img={freyaImg} />
-              </SplideSlide>
-              <SplideSlide>
-                <NftBox name={"Freya"} img={freyaImg} staked />
-              </SplideSlide>
-              <SplideSlide>
-                <NftBox name={"Freya"} img={freyaImg} />
-              </SplideSlide>
+              {filteredArray.freyaNft.map((elem, idx) => {
+                return (
+                  <SplideSlide key={"freya" + idx}>
+                    <NftBox
+                      setValues={setValues}
+                      setModal={setModal}
+                      img={freyaImg}
+                      {...elem}
+                    />
+                  </SplideSlide>
+                );
+              })}
             </Splide>
             <div className="wrapper-h1">
               <h1 className="trajan">200$ASG/DAY</h1>
@@ -152,6 +181,7 @@ function Stake() {
               options={{
                 rewind: true,
                 gap: "1rem",
+                drag: true,
                 type: "loop",
                 perMove: 1,
                 width: "85%",
@@ -171,21 +201,18 @@ function Stake() {
                 },
               }}
             >
-              <SplideSlide>
-                <NftBox name={"Thor"} img={thorImg} staked />
-              </SplideSlide>
-              <SplideSlide>
-                <NftBox name={"Thor"} img={thorImg} staked />
-              </SplideSlide>
-              <SplideSlide>
-                <NftBox name={"Thor"} img={thorImg} />
-              </SplideSlide>
-              <SplideSlide>
-                <NftBox name={"Thor"} img={thorImg} staked />
-              </SplideSlide>
-              <SplideSlide>
-                <NftBox name={"Thor"} img={thorImg} />
-              </SplideSlide>
+              {filteredArray.thorNft.map((elem, idx) => {
+                return (
+                  <SplideSlide key={"thor" + idx}>
+                    <NftBox
+                      setValues={setValues}
+                      setModal={setModal}
+                      img={thorImg}
+                      {...elem}
+                    />
+                  </SplideSlide>
+                );
+              })}
             </Splide>
             <div className="wrapper-h1">
               <h1 className="trajan">300$ASG/DAY</h1>
@@ -203,6 +230,7 @@ function Stake() {
                 gap: "1rem",
                 type: "loop",
                 perMove: 1,
+                drag: true,
                 width: "85%",
                 perPage: 3,
                 pagination: false,
@@ -220,21 +248,18 @@ function Stake() {
                 },
               }}
             >
-              <SplideSlide>
-                <NftBox name={"Odin"} img={odinImg} staked />
-              </SplideSlide>
-              <SplideSlide>
-                <NftBox name={"Odin"} img={odinImg} staked />
-              </SplideSlide>
-              <SplideSlide>
-                <NftBox name={"Odin"} img={odinImg} />
-              </SplideSlide>
-              <SplideSlide>
-                <NftBox name={"Odin"} img={odinImg} staked />
-              </SplideSlide>
-              <SplideSlide>
-                <NftBox name={"Odin"} img={odinImg} />
-              </SplideSlide>
+              {filteredArray.odinNft.map((elem, idx) => {
+                return (
+                  <SplideSlide key={"odin" + idx}>
+                    <NftBox
+                      setValues={setValues}
+                      setModal={setModal}
+                      img={odinImg}
+                      {...elem}
+                    />
+                  </SplideSlide>
+                );
+              })}
             </Splide>
             <div className="wrapper-h1">
               <h1 className="trajan">500$ASG/DAY</h1>
