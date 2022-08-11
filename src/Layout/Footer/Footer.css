@@ -51,6 +51,7 @@
   font-size: 12px;
   color: white;
   text-align: center;
+  font-weight: 300;
 }
 .footer h2 a {
   background: linear-gradient(90deg, #2e62ff 26.2%, #4b24dc 100%);

@@ -78,7 +78,7 @@ function Stake() {
           >
             Filter by <FontAwesomeIcon icon={faChevronDown} />
           </p>
-          {openFilterModal && <FilterModal />}
+          {openFilterModal && <FilterModal closeModal={setOpenFilterModal} />}
         </div>
         {heim && (
           <div className="slider-row heimdall-row">
