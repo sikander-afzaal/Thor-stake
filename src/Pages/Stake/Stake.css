@@ -27,15 +27,13 @@
   border-radius: 100vh;
 }
 .stake-header h3:hover {
-  background-color: lightgray;
-  color: black;
+  color: grey;
 }
 .active-main {
   background: rgba(17, 20, 29, 0.72);
   border: 1px solid #000000;
 }
 .active-main:hover {
-  background: rgba(17, 20, 29, 0.72) !important;
   color: white !important;
 }
 .row-rent-selection {
