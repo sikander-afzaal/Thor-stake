@@ -84,7 +84,7 @@ function Stake() {
                 setAll({ stake: true, unstake: false });
                 setModal(true);
               }}
-              className="rent kanit"
+              className="mint kanit"
             >
               stake all
             </button>

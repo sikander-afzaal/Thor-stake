@@ -36,6 +36,12 @@
   width: 440px;
   height: 440px;
 }
+.modal-row h3 {
+  font-size: 35px;
+  color: white;
+  font-weight: 400;
+  text-align: center;
+}
 .cross {
   position: absolute;
   color: white;
@@ -52,6 +58,9 @@
   align-items: center;
   width: 256px;
   margin: 0.5rem 0rem;
+}
+.center {
+  justify-content: center;
 }
 .modal-row p {
   color: white;

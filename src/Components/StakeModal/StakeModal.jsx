@@ -15,6 +15,7 @@ function StakeModal({ setCloseModal, name, id, staked, all, setAll }) {
   const [loader, setLoader] = useState(false);
   const [complete, setcomplete] = useState(false);
   const [btnText, setBtnText] = useState("");
+  const [midText, setMidText] = useState("");
   function onChange(value) {
     console.log("Captcha value:", value);
   }
@@ -23,8 +24,10 @@ function StakeModal({ setCloseModal, name, id, staked, all, setAll }) {
       staked ? setBtnText("unstake") : setBtnText("stake");
     } else if (all.stake) {
       setBtnText("stake");
+      setMidText("Stake All?");
     } else if (all.unstake) {
       setBtnText("unstake");
+      setMidText("Unstake All?");
     }
   }, []);
 
@@ -52,6 +55,7 @@ function StakeModal({ setCloseModal, name, id, staked, all, setAll }) {
   const closeModal = () => {
     setCloseModal(false);
     setAll({ stake: false, unstake: false });
+    setMidText("");
   };
 
   return (
@@ -75,10 +79,16 @@ function StakeModal({ setCloseModal, name, id, staked, all, setAll }) {
         ) : (
           <>
             <img onClick={closeModal} src={cross} alt="" className="cross" />
-            <div className="modal-row">
-              <p className="kanit">Rent</p>
-              <h2 className="kanit">{name} #0001</h2>
-            </div>
+            {midText ? (
+              <div className="modal-row center">
+                <h3 className="kanit">{midText}</h3>
+              </div>
+            ) : (
+              <div className="modal-row">
+                <p className="kanit">Rent</p>
+                <h2 className="kanit">{name} #0001</h2>
+              </div>
+            )}
             <img src={union} alt="" className="union" />
 
             <ReCAPTCHA sitekey="Your client site key" onChange={onChange} />
