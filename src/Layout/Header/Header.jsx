@@ -9,11 +9,11 @@ function Header() {
       <div className="header-right">
         <div className="price-thor">
           <p className="kanit">
-            34.712 <span className="trajan">ASG</span>
+            0 <span className="trajan">ASG</span>
           </p>
           <div className="rule"></div>
           <p className="kanit">
-            34.712 <span className="trajan">THOR</span>
+            0 <span className="trajan">THOR</span>
           </p>
         </div>
         {connect ? (
