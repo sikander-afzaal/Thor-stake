@@ -29,7 +29,7 @@ function StakeModal({ setCloseModal, name, id, staked, all, setAll }) {
       setBtnText("unstake");
       setMidText("Unstake All?");
     }
-  }, []);
+  }, [all.stake, staked, all.unstake]);
 
   const loadHandler = () => {
     setLoader(true);
@@ -85,7 +85,7 @@ function StakeModal({ setCloseModal, name, id, staked, all, setAll }) {
               </div>
             ) : (
               <div className="modal-row">
-                <p className="kanit">Rent</p>
+                <p className="kanit">{staked ? "Unstake" : "Stake"}</p>
                 <h2 className="kanit">{name} #0001</h2>
               </div>
             )}
