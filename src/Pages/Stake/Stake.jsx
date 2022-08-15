@@ -126,6 +126,7 @@ function Stake() {
                 perPage: 3,
                 drag: true,
                 pagination: false,
+                type: "loop",
                 breakpoints: {
                   974: {
                     perPage: 2,
@@ -182,6 +183,7 @@ function Stake() {
                 width: "85%",
                 drag: true,
                 perPage: 3,
+                type: "loop",
                 pagination: false,
                 breakpoints: {
                   974: {
@@ -237,6 +239,7 @@ function Stake() {
                 gap: "1rem",
                 drag: true,
                 perMove: 1,
+                type: "loop",
                 width: "85%",
                 perPage: 3,
                 pagination: false,
@@ -295,6 +298,7 @@ function Stake() {
                 perMove: 1,
                 drag: true,
                 width: "85%",
+                type: "loop",
                 perPage: 3,
                 pagination: false,
                 breakpoints: {
