@@ -21,7 +21,7 @@
   align-items: center;
   gap: 20px;
 }
-.stake-header h3 {
+.stake-links {
   text-transform: uppercase;
   color: white;
   font-weight: 500;
@@ -30,8 +30,10 @@
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   border-radius: 100vh;
+  text-decoration: none;
 }
-.stake-header h3:hover {
+
+.stake-links:hover {
   color: grey;
 }
 .active-main {

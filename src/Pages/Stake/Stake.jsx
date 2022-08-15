@@ -54,7 +54,13 @@ function Stake() {
       <div className="stake-header">
         <h3 className="stake-links kanit">Rent</h3>
         <h3 className="stake-links kanit active-main">Stake</h3>
-        <h3 className="stake-links kanit">Mint</h3>
+        <a
+          href="https://mint.godsofasgardp2e.com/"
+          target={"blank"}
+          className="stake-links kanit"
+        >
+          Mint
+        </a>
       </div>
       <div className="row-rent-selection">
         <p
