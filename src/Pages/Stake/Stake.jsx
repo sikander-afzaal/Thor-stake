@@ -3,7 +3,7 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
-import { useSelector } from "react-redux/es/hooks/useSelector";
+import { useSelector } from "react-redux";
 
 import FilterModal from "../../Components/FilterModal/FilterModal";
 import "./Stake.css";
@@ -20,6 +20,7 @@ function Stake() {
   const [openFilterModal, setOpenFilterModal] = useState(false);
   const [stakedNft, setStakedNft] = useState("All");
   const [filteredArray, setFilteredArray] = useState(nft);
+  const [all, setAll] = useState({ stake: false, unstake: false });
   const [modal, setModal] = useState(false); //state to update modal visibility
   const [values, setValues] = useState({ name: "", staked: "", id: "" }); //setting values of the box that is being stakeds
   useEffect(() => {
@@ -42,7 +43,14 @@ function Stake() {
 
   return (
     <div className="stakeCont">
-      {modal && <StakeModal setCloseModal={setModal} {...values} />}
+      {modal && (
+        <StakeModal
+          setCloseModal={setModal}
+          {...values}
+          all={all}
+          setAll={setAll}
+        />
+      )}
       <div className="stake-header">
         <h3 className="stake-links kanit">Rent</h3>
         <h3 className="stake-links kanit active-main">Stake</h3>
@@ -69,17 +77,40 @@ function Stake() {
         </p>
       </div>
       <div className="bottom-stake">
-        <div className="drop-menu-filter">
-          <p
-            className="kanit"
-            onClick={() => {
-              setOpenFilterModal((prev) => !prev);
-            }}
-          >
-            Filter by <FontAwesomeIcon icon={faChevronDown} />
-          </p>
-          {openFilterModal && <FilterModal closeModal={setOpenFilterModal} />}
+        <div className="filter-row">
+          <div className="btn-div">
+            <button
+              onClick={() => {
+                setAll({ stake: true, unstake: false });
+                setModal(true);
+              }}
+              className="rent kanit"
+            >
+              stake all
+            </button>
+            <button
+              onClick={() => {
+                setAll({ stake: false, unstake: true });
+                setModal(true);
+              }}
+              className="mint kanit"
+            >
+              unstake all
+            </button>
+          </div>
+          <div className="drop-menu-filter">
+            <p
+              className="kanit"
+              onClick={() => {
+                setOpenFilterModal((prev) => !prev);
+              }}
+            >
+              Filter by <FontAwesomeIcon icon={faChevronDown} />
+            </p>
+            {openFilterModal && <FilterModal closeModal={setOpenFilterModal} />}
+          </div>
         </div>
+
         {heim && (
           <div className="slider-row heimdall-row">
             <div className="wrapper-h1">
@@ -90,7 +121,6 @@ function Stake() {
               options={{
                 rewind: true,
                 gap: "1rem",
-                type: "loop",
                 perMove: 1,
                 width: "85%",
                 perPage: 3,
@@ -148,7 +178,6 @@ function Stake() {
               options={{
                 rewind: true,
                 gap: "1rem",
-                type: "loop",
                 perMove: 1,
                 width: "85%",
                 drag: true,
@@ -207,7 +236,6 @@ function Stake() {
                 rewind: true,
                 gap: "1rem",
                 drag: true,
-                type: "loop",
                 perMove: 1,
                 width: "85%",
                 perPage: 3,
@@ -264,7 +292,6 @@ function Stake() {
               options={{
                 rewind: true,
                 gap: "1rem",
-                type: "loop",
                 perMove: 1,
                 drag: true,
                 width: "85%",

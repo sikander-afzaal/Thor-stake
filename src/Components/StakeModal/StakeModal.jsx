@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { updateStake } from "../../redux/filterReducer";
+import { updateAll, updateStake } from "../../redux/filterReducer";
 
 import "./StakeModal.css";
 import union from "../../Assets/Union.svg";
@@ -9,21 +9,38 @@ import loaderGif from "../../Assets/loader.gif";
 import ReCAPTCHA from "react-google-recaptcha";
 import cross from "../../Assets/cross.svg";
 
-function StakeModal({ setCloseModal, name, id, staked }) {
+function StakeModal({ setCloseModal, name, id, staked, all, setAll }) {
   const dispatch = useDispatch();
 
   const [loader, setLoader] = useState(false);
   const [complete, setcomplete] = useState(false);
+  const [btnText, setBtnText] = useState("");
   function onChange(value) {
     console.log("Captcha value:", value);
   }
+  useEffect(() => {
+    if (all.stake === false && all.unstake === false) {
+      staked ? setBtnText("unstake") : setBtnText("stake");
+    } else if (all.stake) {
+      setBtnText("stake");
+    } else if (all.unstake) {
+      setBtnText("unstake");
+    }
+  }, []);
+
   const loadHandler = () => {
     setLoader(true);
 
     setTimeout(() => {
       setLoader(false);
       setcomplete(true);
-      dispatch(updateStake({ name: name, id: id }));
+      if (!all.stake && !all.unstake) {
+        dispatch(updateStake({ name: name, id: id }));
+      } else if (all.stake) {
+        dispatch(updateAll(true));
+      } else if (all.unstake) {
+        dispatch(updateAll(false));
+      }
     }, 2000);
 
     setTimeout(() => {
@@ -34,11 +51,12 @@ function StakeModal({ setCloseModal, name, id, staked }) {
 
   const closeModal = () => {
     setCloseModal(false);
+    setAll({ stake: false, unstake: false });
   };
 
   return (
     <>
-      <div className="overlay-modal" onClick={closeModal}></div>
+      <div className="overlay-modal stake-ovelay" onClick={closeModal}></div>
       <div className="modal-rent">
         {loader ? (
           <div className="loader-div">
@@ -65,7 +83,7 @@ function StakeModal({ setCloseModal, name, id, staked }) {
 
             <ReCAPTCHA sitekey="Your client site key" onChange={onChange} />
             <button onClick={() => loadHandler()} className="rent long-rent">
-              {staked ? "Unstake" : "Stake"}
+              {btnText}
             </button>
           </>
         )}

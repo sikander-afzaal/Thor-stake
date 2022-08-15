@@ -71,7 +71,7 @@
   transition: all 0.3s ease-in-out;
   position: absolute;
   width: 100%;
-  z-index: 3;
+  z-index: 0;
   height: 4px;
   bottom: -1px;
   border-radius: 10px;
@@ -90,6 +90,95 @@
   width: 100%;
   gap: 2rem;
 }
+.filter-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.mint {
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 60px;
+  border: 2px solid white;
+  width: max-content;
+  height: 40px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  padding: 15px;
+  color: white;
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: all 0.4s ease-in-out;
+  font-family: "Kanit", sans-serif;
+  background-color: transparent;
+  background-clip: padding-box;
+  overflow: hidden;
+  z-index: 0;
+  position: relative;
+}
+
+.mint::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  border: 2px solid transparent;
+  background-clip: padding-box, border-box;
+  background-repeat: repeat-x;
+  background-size: calc(100% + 2px * 2) calc(100% + 2px * 2);
+  background-position: center;
+  border-radius: 26px;
+  z-index: -1;
+  transition: border-color 0.2s;
+}
+
+.mint::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70vmax;
+  height: 70vmax;
+  border-radius: 50%;
+  background-image: linear-gradient(90deg, #008cff, #6942ef);
+  transform-origin: center;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.4s ease-in-out;
+  z-index: -1;
+}
+.mint:hover {
+  color: white;
+}
+.mint:hover::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+.mint:active {
+  color: #c3c4d5;
+}
+.mint:focus {
+  color: white;
+}
+.rent:focus::before {
+  border-color: #00b8d9;
+}
+.filter-row .btn-div .rent {
+  width: max-content;
+  height: 40px;
+  font-weight: 500;
+}
+.btn-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
 .drop-menu-filter {
   position: relative;
 }
@@ -103,7 +192,7 @@
   width: fit-content;
   user-select: none;
   position: relative;
-  z-index: 7;
+  z-index: 9;
 }
 .drop-menu-filter p svg {
   transition: all 0.5s ease-in-out;
@@ -249,6 +338,12 @@
   }
   .slider-row .splide__arrow--next {
     right: 0px !important;
+  }
+}
+@media screen and (max-width: 463px) {
+  .filter-row {
+    flex-direction: column;
+    gap: 20px;
   }
 }
 @media screen and (max-width: 410px) {

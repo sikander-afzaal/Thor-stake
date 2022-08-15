@@ -97,9 +97,26 @@ const filterReducer = createSlice({
           return state;
       }
     },
+    updateAll: (state, action) => {
+      const copy = { ...state.nft };
+      if (action.payload === false) {
+        for (let [key, value] of Object.entries(state.nft)) {
+          copy[key] = value.map((elem) => {
+            return { ...elem, staked: false };
+          });
+        }
+      } else if (action.payload === true) {
+        for (let [key, value] of Object.entries(state.nft)) {
+          copy[key] = value.map((elem) => {
+            return { ...elem, staked: true };
+          });
+        }
+      }
+      state.nft = copy;
+    },
   },
 });
 
-export const { updateFilter, updateStake } = filterReducer.actions;
+export const { updateAll, updateFilter, updateStake } = filterReducer.actions;
 
 export default filterReducer.reducer;
