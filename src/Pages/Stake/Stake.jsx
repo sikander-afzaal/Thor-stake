@@ -116,54 +116,59 @@ function Stake() {
             <div className="wrapper-h1">
               <h1 className="trajan">HEIMDALL</h1>
             </div>
-            <Splide
-              hasTrack={false}
-              options={{
-                rewind: true,
-                gap: "1rem",
-                perMove: 1,
-                width: "85%",
-                perPage: 3,
-                drag: true,
-                pagination: false,
-                type: "loop",
-                breakpoints: {
-                  974: {
-                    perPage: 2,
-                    width: "80%",
+            {filteredArray.heimNft.length > 0 ? (
+              <Splide
+                hasTrack={false}
+                options={{
+                  rewind: true,
+                  gap: "1rem",
+                  perMove: 1,
+                  width: "85%",
+                  perPage: 3,
+                  drag: true,
+                  pagination: false,
+                  type: "loop",
+                  breakpoints: {
+                    974: {
+                      perPage: 2,
+                      width: "80%",
+                    },
+                    700: {
+                      perPage: 1,
+                    },
+                    580: {
+                      width: "100%",
+                    },
                   },
-                  700: {
-                    perPage: 1,
-                  },
-                  580: {
-                    width: "100%",
-                  },
-                },
-              }}
-            >
-              <SplideTrack>
-                {filteredArray.heimNft.map((elem, idx) => {
-                  return (
-                    <SplideSlide key={"heim" + idx}>
-                      <NftBox
-                        setValues={setValues}
-                        setModal={setModal}
-                        img={heimdallImg}
-                        {...elem}
-                      />
-                    </SplideSlide>
-                  );
-                })}
-              </SplideTrack>
-              <div className="splide__arrows">
-                <button className="splide__arrow splide__arrow--prev">
-                  <img src={leftArrow} alt="" />
-                </button>
-                <button className="splide__arrow splide__arrow--next">
-                  <img src={rightArrow} alt="" />
-                </button>
-              </div>
-            </Splide>
+                }}
+              >
+                <SplideTrack>
+                  {filteredArray.heimNft.map((elem, idx) => {
+                    return (
+                      <SplideSlide key={"heim" + idx}>
+                        <NftBox
+                          setValues={setValues}
+                          setModal={setModal}
+                          img={heimdallImg}
+                          {...elem}
+                        />
+                      </SplideSlide>
+                    );
+                  })}
+                </SplideTrack>
+                <div className="splide__arrows">
+                  <button className="splide__arrow splide__arrow--prev">
+                    <img src={leftArrow} alt="" />
+                  </button>
+                  <button className="splide__arrow splide__arrow--next">
+                    <img src={rightArrow} alt="" />
+                  </button>
+                </div>
+              </Splide>
+            ) : (
+              <h2 className="trajan error-nft">No Nfts</h2>
+            )}
+
             <div className="wrapper-h1">
               <h1 className="trajan">100$ASG/DAY</h1>
             </div>
@@ -174,54 +179,59 @@ function Stake() {
             <div className="wrapper-h1">
               <h1 className="trajan">Freya</h1>
             </div>
-            <Splide
-              hasTrack={false}
-              options={{
-                rewind: true,
-                gap: "1rem",
-                perMove: 1,
-                width: "85%",
-                drag: true,
-                perPage: 3,
-                type: "loop",
-                pagination: false,
-                breakpoints: {
-                  974: {
-                    perPage: 2,
-                    width: "80%",
+            {filteredArray.freyaNft.length > 0 ? (
+              <Splide
+                hasTrack={false}
+                options={{
+                  rewind: true,
+                  gap: "1rem",
+                  perMove: 1,
+                  width: "85%",
+                  drag: true,
+                  perPage: 3,
+                  type: "loop",
+                  pagination: false,
+                  breakpoints: {
+                    974: {
+                      perPage: 2,
+                      width: "80%",
+                    },
+                    700: {
+                      perPage: 1,
+                    },
+                    580: {
+                      width: "100%",
+                    },
                   },
-                  700: {
-                    perPage: 1,
-                  },
-                  580: {
-                    width: "100%",
-                  },
-                },
-              }}
-            >
-              <SplideTrack>
-                {filteredArray.freyaNft.map((elem, idx) => {
-                  return (
-                    <SplideSlide key={"freya" + idx}>
-                      <NftBox
-                        setValues={setValues}
-                        setModal={setModal}
-                        img={freyaImg}
-                        {...elem}
-                      />
-                    </SplideSlide>
-                  );
-                })}
-              </SplideTrack>
-              <div className="splide__arrows">
-                <button className="splide__arrow splide__arrow--prev">
-                  <img src={leftArrow} alt="" />
-                </button>
-                <button className="splide__arrow splide__arrow--next">
-                  <img src={rightArrow} alt="" />
-                </button>
-              </div>
-            </Splide>
+                }}
+              >
+                <SplideTrack>
+                  {filteredArray.freyaNft.map((elem, idx) => {
+                    return (
+                      <SplideSlide key={"freya" + idx}>
+                        <NftBox
+                          setValues={setValues}
+                          setModal={setModal}
+                          img={freyaImg}
+                          {...elem}
+                        />
+                      </SplideSlide>
+                    );
+                  })}
+                </SplideTrack>
+                <div className="splide__arrows">
+                  <button className="splide__arrow splide__arrow--prev">
+                    <img src={leftArrow} alt="" />
+                  </button>
+                  <button className="splide__arrow splide__arrow--next">
+                    <img src={rightArrow} alt="" />
+                  </button>
+                </div>
+              </Splide>
+            ) : (
+              <h2 className="trajan error-nft">No Nfts</h2>
+            )}
+
             <div className="wrapper-h1">
               <h1 className="trajan">200$ASG/DAY</h1>
             </div>
@@ -232,54 +242,59 @@ function Stake() {
             <div className="wrapper-h1">
               <h1 className="trajan">Thor</h1>
             </div>
-            <Splide
-              hasTrack={false}
-              options={{
-                rewind: true,
-                gap: "1rem",
-                drag: true,
-                perMove: 1,
-                type: "loop",
-                width: "85%",
-                perPage: 3,
-                pagination: false,
-                breakpoints: {
-                  974: {
-                    perPage: 2,
-                    width: "80%",
+            {filteredArray.thorNft.length > 0 ? (
+              <Splide
+                hasTrack={false}
+                options={{
+                  rewind: true,
+                  gap: "1rem",
+                  drag: true,
+                  perMove: 1,
+                  type: "loop",
+                  width: "85%",
+                  perPage: 3,
+                  pagination: false,
+                  breakpoints: {
+                    974: {
+                      perPage: 2,
+                      width: "80%",
+                    },
+                    700: {
+                      perPage: 1,
+                    },
+                    580: {
+                      width: "100%",
+                    },
                   },
-                  700: {
-                    perPage: 1,
-                  },
-                  580: {
-                    width: "100%",
-                  },
-                },
-              }}
-            >
-              <SplideTrack>
-                {filteredArray.thorNft.map((elem, idx) => {
-                  return (
-                    <SplideSlide key={"thor" + idx}>
-                      <NftBox
-                        setValues={setValues}
-                        setModal={setModal}
-                        img={thorImg}
-                        {...elem}
-                      />
-                    </SplideSlide>
-                  );
-                })}
-              </SplideTrack>
-              <div className="splide__arrows">
-                <button className="splide__arrow splide__arrow--prev">
-                  <img src={leftArrow} alt="" />
-                </button>
-                <button className="splide__arrow splide__arrow--next">
-                  <img src={rightArrow} alt="" />
-                </button>
-              </div>
-            </Splide>
+                }}
+              >
+                <SplideTrack>
+                  {filteredArray.thorNft.map((elem, idx) => {
+                    return (
+                      <SplideSlide key={"thor" + idx}>
+                        <NftBox
+                          setValues={setValues}
+                          setModal={setModal}
+                          img={thorImg}
+                          {...elem}
+                        />
+                      </SplideSlide>
+                    );
+                  })}
+                </SplideTrack>
+                <div className="splide__arrows">
+                  <button className="splide__arrow splide__arrow--prev">
+                    <img src={leftArrow} alt="" />
+                  </button>
+                  <button className="splide__arrow splide__arrow--next">
+                    <img src={rightArrow} alt="" />
+                  </button>
+                </div>
+              </Splide>
+            ) : (
+              <h2 className="trajan error-nft">No Nfts</h2>
+            )}
+
             <div className="wrapper-h1">
               <h1 className="trajan">300$ASG/DAY</h1>
             </div>
@@ -290,54 +305,59 @@ function Stake() {
             <div className="wrapper-h1">
               <h1 className="trajan">Odin</h1>
             </div>
-            <Splide
-              hasTrack={false}
-              options={{
-                rewind: true,
-                gap: "1rem",
-                perMove: 1,
-                drag: true,
-                width: "85%",
-                type: "loop",
-                perPage: 3,
-                pagination: false,
-                breakpoints: {
-                  974: {
-                    perPage: 2,
-                    width: "80%",
+            {filteredArray.odinNft.length > 0 ? (
+              <Splide
+                hasTrack={false}
+                options={{
+                  rewind: true,
+                  gap: "1rem",
+                  perMove: 1,
+                  drag: true,
+                  width: "85%",
+                  type: "loop",
+                  perPage: 3,
+                  pagination: false,
+                  breakpoints: {
+                    974: {
+                      perPage: 2,
+                      width: "80%",
+                    },
+                    700: {
+                      perPage: 1,
+                    },
+                    580: {
+                      width: "100%",
+                    },
                   },
-                  700: {
-                    perPage: 1,
-                  },
-                  580: {
-                    width: "100%",
-                  },
-                },
-              }}
-            >
-              <SplideTrack>
-                {filteredArray.odinNft.map((elem, idx) => {
-                  return (
-                    <SplideSlide key={"odin" + idx}>
-                      <NftBox
-                        setValues={setValues}
-                        setModal={setModal}
-                        img={odinImg}
-                        {...elem}
-                      />
-                    </SplideSlide>
-                  );
-                })}
-              </SplideTrack>
-              <div className="splide__arrows">
-                <button className="splide__arrow splide__arrow--prev">
-                  <img src={leftArrow} alt="" />
-                </button>
-                <button className="splide__arrow splide__arrow--next">
-                  <img src={rightArrow} alt="" />
-                </button>
-              </div>
-            </Splide>
+                }}
+              >
+                <SplideTrack>
+                  {filteredArray.odinNft.map((elem, idx) => {
+                    return (
+                      <SplideSlide key={"odin" + idx}>
+                        <NftBox
+                          setValues={setValues}
+                          setModal={setModal}
+                          img={odinImg}
+                          {...elem}
+                        />
+                      </SplideSlide>
+                    );
+                  })}
+                </SplideTrack>
+                <div className="splide__arrows">
+                  <button className="splide__arrow splide__arrow--prev">
+                    <img src={leftArrow} alt="" />
+                  </button>
+                  <button className="splide__arrow splide__arrow--next">
+                    <img src={rightArrow} alt="" />
+                  </button>
+                </div>
+              </Splide>
+            ) : (
+              <h2 className="trajan error-nft">No Nfts</h2>
+            )}
+
             <div className="wrapper-h1">
               <h1 className="trajan">500$ASG/DAY</h1>
             </div>

@@ -10,6 +10,11 @@
   padding-inline: 20px;
   min-height: 100vh;
 }
+.error-nft {
+  color: white;
+  font-size: 3rem;
+  text-transform: uppercase;
+}
 .stake-header {
   display: flex;
   justify-content: center;
@@ -319,6 +324,9 @@
   .slider-row {
     flex-direction: column;
     height: auto;
+  }
+  .error-nft {
+    font-size: 1.5rem;
   }
   .wrapper-h1 {
     width: 100%;
